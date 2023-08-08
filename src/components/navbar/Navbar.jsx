@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./navbar.scss";
 import SearchRounded from "@mui/icons-material/SearchRounded";
 import Notification from "@mui/icons-material/Notifications";
-import profileImg from "../../asset/beach-palmtrees-1361702.jpg";
+import profileImg from "../../asset/img/beach-palmtrees-1361702.jpg";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 
 const Navbar = () => {

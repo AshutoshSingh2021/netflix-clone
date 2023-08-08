@@ -1,9 +1,9 @@
 import React from "react";
 import "./featured.scss";
-import profileImg from "../../asset/beach-palmtrees-1361702.jpg";
+import profileImg from "../../asset/img/beach-palmtrees-1361702.jpg";
 import PlayArrow from "@mui/icons-material/PlayArrow";
 import InfoOutlined from "@mui/icons-material/InfoOutlined";
-import InfoImg from "../../asset/movie.png";
+import InfoImg from "../../asset/img/movie.png";
 
 const Featured = (props) => {
   console.log(props.type);
