@@ -4,6 +4,7 @@ import SearchRounded from "@mui/icons-material/SearchRounded";
 import Notification from "@mui/icons-material/Notifications";
 import profileImg from "../../asset/img/beach-palmtrees-1361702.jpg";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const [isScrolled, setScrolled] = useState(false);
@@ -21,9 +22,15 @@ const Navbar = () => {
             src="https://www.freepnglogos.com/uploads/netflix-logo-0.png"
             alt="netflix logo"
           />
-          <span>Home</span>
-          <span>Series</span>
-          <span>Movies</span>
+          <Link to="/" className="link">
+            <span>Home</span>
+          </Link>
+          <Link to="/series" className="link">
+            <span>Series</span>
+          </Link>
+          <Link to="/movies" className="link">
+            <span>Movies</span>
+          </Link>
           <span>New and Popular</span>
           <span>My List</span>
         </div>
