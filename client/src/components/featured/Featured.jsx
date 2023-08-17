@@ -1,17 +1,37 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./featured.scss";
 import profileImg from "../../asset/img/beach-palmtrees-1361702.jpg";
 import PlayArrow from "@mui/icons-material/PlayArrow";
 import InfoOutlined from "@mui/icons-material/InfoOutlined";
 import InfoImg from "../../asset/img/movie.png";
+import axios from "axios";
+import { CallMissedOutgoing } from "@mui/icons-material";
 
-const Featured = (props) => {
-  console.log(props.type);
+const Featured = ({ type }) => {
+  const [content, setContent] = useState({});
+
+  useEffect(() => {
+    const getRandomContent = async () => {
+      try {
+        const res = await axios.get(`/movies/random?type${type}`, {
+          headers: {
+            token:
+              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ZDc1ZjRiM2M0YjA3NDIyYzIwZjZhMCIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY5MTg5OTIyNSwiZXhwIjoxNjkyMzMxMjI1fQ.VrlzU6U7jHG9SmTqVAL2abubpIHWwMNf7HIxH_lm3qU",
+          },
+        });
+        setContent(res.data[0]);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    getRandomContent();
+  }, [type]);
+  // console.log(type);
   return (
     <div className="featured">
-      {props.type && (
+      {type && (
         <div className="category">
-          <span>{props.type === "movies" ? "Movies" : "Series"}</span>
+          <span>{type === "movies" ? "Movies" : "Series"}</span>
           <select name="genre" id="genre">
             <option>Genre</option>
             <option value="adventure">Adventure</option>
@@ -30,16 +50,11 @@ const Featured = (props) => {
           </select>
         </div>
       )}
-      <img width="100%" src={profileImg} alt="featured" />
+      <img width="100%" src={content.img} alt="featured" />
 
       <div className="info">
-        <img src={InfoImg} alt="" />
-        <span className="desc">
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Earum, ut.
-          Exercitationem dignissimos praesentium iusto provident necessitatibus
-          dolores nobis architecto obcaecati quisquam eum deserunt, in fuga
-          eveniet placeat!
-        </span>
+        <img src={content.imgTitle} alt="" />
+        <span className="desc">{content.desc}</span>
         <div className="buttons">
           <button className="play">
             <PlayArrow />
